@@ -4,7 +4,7 @@
     <div class="plan">
       <div class="start"></div>
       <div class="room">
-        <p class="name">Hallway</p>
+        <p class="name"><%= link "Hallway", to: Routes.live_path(LightWeb.Endpoint, LightWeb.Room.ShowLive, "Hallway")%></p>
         <div class="light-bulb">
           <div class="base"></div>
           <div class="light"></div>
@@ -12,16 +12,7 @@
         <div class="door"></div>
       </div>
       <div class="room">
-        <p class="name">Sala</p>
-        <div class="light-bulb">
-          <div class="base"></div>
-          <div class="light"></div>
-        </div>
-        <div class="door"></div>
-      </div>
-
-      <div class="room">
-        <p class="name">Bedroom 1</p>
+        <p class="name"><%= link "Sala", to: Routes.live_path(LightWeb.Endpoint, LightWeb.Room.ShowLive, "Sala")%></p>
         <div class="light-bulb">
           <div class="base"></div>
           <div class="light"></div>
@@ -30,7 +21,7 @@
       </div>
 
       <div class="room">
-        <p class="name">Bedroom 2</p>
+        <p class="name"><%= link "Bedroom 1", to: Routes.live_path(LightWeb.Endpoint, LightWeb.Room.ShowLive, "Bedroom 1")%></p>
         <div class="light-bulb">
           <div class="base"></div>
           <div class="light"></div>
@@ -39,7 +30,16 @@
       </div>
 
       <div class="room">
-        <p class="name">Kitchen</p>
+        <p class="name"><%= link "Bedroom 2", to: Routes.live_path(LightWeb.Endpoint, LightWeb.Room.ShowLive, "Bedroom 2")%></p>
+        <div class="light-bulb">
+          <div class="base"></div>
+          <div class="light"></div>
+        </div>
+        <div class="door"></div>
+      </div>
+
+      <div class="room">
+        <p class="name"><%= link "Kitchen", to: Routes.live_path(LightWeb.Endpoint, LightWeb.Room.ShowLive, "Kitchen")%></p>
         <div class="light-bulb">
           <div class="base"></div>
           <div class="light"></div>
