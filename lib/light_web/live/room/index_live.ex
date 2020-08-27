@@ -1,11 +1,11 @@
-defmodule LightWeb.PageLive do
+defmodule LightWeb.Room.IndexLive do
   use LightWeb, :live_view
 
   def render(assigns) do
-    Phoenix.View.render(LightWeb.PageView, "index.html", assigns)
+    Phoenix.View.render(LightWeb.RoomView, "index.html", assigns)
   end
 
-  def mount(_params, _session, socket) do
+  def mount(params, session, socket) do
     {:ok, socket}
   end
 

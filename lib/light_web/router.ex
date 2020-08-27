@@ -17,7 +17,8 @@ defmodule LightWeb.Router do
   scope "/", LightWeb do
     pipe_through :browser
 
-    live "/", PageLive, :index
+    live "/", Room.IndexLive
+    live "/room/:room", Room.ShowLive
   end
 
   # Other scopes may use custom stacks.
