@@ -1,8 +1,14 @@
+# Light
+
+- [x] Demo use of Phoenix Live View
+- [x] Demo use of Live View Components and state management
+- [ ] Implement hardware to respond to user controls
+
 # Demo
 
 ![](demo/light.gif)
 
-# Light
+# Start
 
 To start your Phoenix server:
 
