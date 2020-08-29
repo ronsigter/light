@@ -12,5 +12,5 @@
 </div>
 
 <%= for room <- @rooms do %>
-  <%= live_component(@socket, LightWeb.Room.Component.Controller, id: room.id, room: room) %>
+  <%= live_component(@socket, LightWeb.Room.Component.Controller, id: room.id+1, room: room) %>
 <% end %>

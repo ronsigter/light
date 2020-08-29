@@ -3,19 +3,39 @@ defmodule LightWeb.Room.Component.Controller do
 
   def render(assigns) do
     ~L"""
-    <div class="modal-container">
-      <h1><%= @room.name %> <%= @room.brightness %></h1>
-      <div class="controller-container" id="<%= @id %>">
-        <div class="switch">
-          <button phx-click="switch" phx-value-switch="off" phx-target="<%= @id %>">Off</button>
-          <button phx-click="switch" phx-value-switch="on" phx-target="<%= @id %>">On</button>
-        </div>
-        <div class="dimmers">
-          <button phx-click="dimmer" phx-value-dimmer="down" phx-target="<%= @id %>">Down</button>
-          <button phx-click="dimmer" phx-value-dimmer="up" phx-target="<%= @id %>">Up</button>
+    <%= if @room.show do %>
+      <div class="modal-container" id="<%= @id %>" phx-capture-click="hide_modal" phx-target="<%= @id %>">
+        <div class="modal-inner-container">
+          <div class="modal-card">
+            <div class="room-container">
+              <h1><%= @room.name %></h1>
+              <div class="meter-box">
+                <span class="bar" style="<%= "width: #{@room.brightness}%" %>"></span>
+                <div class="value-box">
+                  <span class="value"><%= @room.brightness %></span>
+                </div>
+              </div>
+              <div class="controller-container">
+                <div class="switche">
+                  <button phx-click="switch" phx-value-switch="off" phx-target="<%= @id %>">Off</button>
+                  <button phx-click="switch" phx-value-switch="on" phx-target="<%= @id %>">On</button>
+                </div>
+
+                <label class="switch">
+                  <input type="checkbox">
+                  <span class="slider round"></span>
+                </label>
+
+                <div class="dimmers">
+                  <button phx-click="dimmer" phx-value-dimmer="down" phx-target="<%= @id %>">Down</button>
+                  <button phx-click="dimmer" phx-value-dimmer="up" phx-target="<%= @id %>">Up</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
     """
   end
 
@@ -82,6 +102,21 @@ defmodule LightWeb.Room.Component.Controller do
     {:noreply, socket}
   end
 
+  def handle_event(
+        "hide_modal",
+        _value,
+        %{
+          assigns: %{
+            room: %{
+              name: name
+            }
+          }
+        } = socket
+      ) do
+    hide_modal(name)
+    {:noreply, socket}
+  end
+
   def handle_event(_event, _value, socket) do
     {:noreply, socket}
   end
@@ -90,6 +125,13 @@ defmodule LightWeb.Room.Component.Controller do
     send(
       self(),
       {__MODULE__, :set_brightness, %{room: name, brightness: brightness}}
+    )
+  end
+
+  defp hide_modal(name) do
+    send(
+      self(),
+      {__MODULE__, :hide_modal, %{room: name}}
     )
   end
 end

@@ -1,0 +1,27 @@
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 998;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-inner-container {
+  position: relative;
+  z-index: 999;
+}
+
+.modal-card {
+  height: auto;
+  width: 28rem;
+  max-width: 51rem;
+  margin: 0.5rem;
+  border-radius: 0.4rem;
+  background-color: #fff;
+}

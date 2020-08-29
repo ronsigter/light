@@ -1,5 +1,9 @@
 .light-bulb {
-  // visibility: hidden;
+  visibility: hidden;
+}
+
+.light-bulb.-active {
+  visibility: visible;
   position: absolute;
   right: -8px;
   top: 2px;
