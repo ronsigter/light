@@ -1,0 +1,35 @@
+.controller-container {
+  display: flex;
+
+  > button {
+    background-color: transparent;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+    padding: 0.5rem 1rem;
+
+    --border-opacity: 1;
+
+    border-color: #97a6ba;
+    border-color: rgba(151, 166, 186, var(--border-opacity));
+    border-width: 2px;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    transition-property: (
+      background-color,
+      border-color,
+      color,
+      fill,
+      stroke,
+      opacity,
+      box-shadow,
+      transform
+    );
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.15s;
+    outline: 0;
+  }
+
+  > button > img {
+    width: 2.5rem;
+  }
+}

@@ -6,15 +6,23 @@
           <h1><%= @room.name %></h1>
           <div class="meter-box">
             <span class="bar" style="<%= "width: #{@room.brightness}%" %>"></span>
-            <div class="value-box">
+            <div class="container">
               <span class="value"><%= @room.brightness %></span>
             </div>
           </div>
           <div class="controller-container">
-            <button phx-click="switch" phx-value-switch="off" phx-target="<%= @id %>">Off</button>
-            <button phx-click="dimmer" phx-value-dimmer="down" phx-target="<%= @id %>">Down</button>
-            <button phx-click="dimmer" phx-value-dimmer="up" phx-target="<%= @id %>">Up</button>
-            <button phx-click="switch" phx-value-switch="on" phx-target="<%= @id %>">On</button>
+            <button phx-click="switch" phx-value-switch="off" phx-target="<%= @id %>">
+              <img class="icon" src="<%= Routes.static_path(@socket, "/images/light-off.svg") %>"></img>
+            </button>
+            <button phx-click="dimmer" phx-value-dimmer="down" phx-target="<%= @id %>">
+              <img class="icon" src="<%= Routes.static_path(@socket, "/images/down.svg") %>"></img>
+            </button>
+            <button phx-click="dimmer" phx-value-dimmer="up" phx-target="<%= @id %>">
+              <img class="icon" src="<%= Routes.static_path(@socket, "/images/up.svg") %>"></img>
+            </button>
+            <button phx-click="switch" phx-value-switch="on" phx-target="<%= @id %>">
+              <img class="icon" src="<%= Routes.static_path(@socket, "/images/light-on.svg") %>"></img>
+            </button>
           </div>
         </div>
       </div>

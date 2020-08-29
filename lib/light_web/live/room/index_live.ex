@@ -22,6 +22,7 @@ defmodule LightWeb.Room.IndexLive do
     {:noreply, socket}
   end
 
+  # Handles Controller Component event states
   def handle_info(
         {Controller, :set_brightness, %{room: selected_room, brightness: brightness}},
         %{assigns: %{rooms: rooms}} = socket
@@ -40,6 +41,7 @@ defmodule LightWeb.Room.IndexLive do
     {:noreply, assign(socket, :rooms, rooms)}
   end
 
+  # Handles Room Component event states
   def handle_info(
         {Room, :show_modal, %{room: selected_room}},
         %{assigns: %{rooms: rooms}} = socket
@@ -53,6 +55,7 @@ defmodule LightWeb.Room.IndexLive do
     {:noreply, socket}
   end
 
+  # Private Helpers
   defp set_room_brightness(%{name: name} = room, selected_room, brightness)
        when name == selected_room,
        do: %{room | brightness: brightness}
