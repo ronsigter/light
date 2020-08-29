@@ -2,18 +2,7 @@ defmodule LightWeb.Room.Component.Room do
   use Phoenix.LiveComponent
 
   def render(assigns) do
-    ~L"""
-    <div class="room">
-      <p class="name">
-        <a href="#" phx-click="show_modal" phx-target="<%= @id %>"><%= @room.name %></a>
-      </p>
-      <div class="light-bulb <%= if @room.brightness > 0 do "-active" end %>">
-        <div class="base"></div>
-        <div class="light"></div>
-      </div>
-      <div class="door"></div>
-    </div>
-    """
+    Phoenix.View.render(LightWeb.RoomView, "_room.html", assigns)
   end
 
   def mount(socket) do
@@ -32,13 +21,7 @@ defmodule LightWeb.Room.Component.Room do
   def handle_event(
         "show_modal",
         _value,
-        %{
-          assigns: %{
-            room: %{
-              name: name
-            }
-          }
-        } = socket
+        %{assigns: %{room: %{name: name}}} = socket
       ) do
     show_modal(name)
     {:noreply, socket}

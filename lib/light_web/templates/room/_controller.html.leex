@@ -1,0 +1,23 @@
+<%= if @room.show do %>
+  <div class="modal-container" id="<%= @id %>" phx-capture-click="hide_modal" phx-target="<%= @id %>">
+    <div class="modal-inner-container">
+      <div class="modal-card">
+        <div class="room-container">
+          <h1><%= @room.name %></h1>
+          <div class="meter-box">
+            <span class="bar" style="<%= "width: #{@room.brightness}%" %>"></span>
+            <div class="value-box">
+              <span class="value"><%= @room.brightness %></span>
+            </div>
+          </div>
+          <div class="controller-container">
+            <button phx-click="switch" phx-value-switch="off" phx-target="<%= @id %>">Off</button>
+            <button phx-click="dimmer" phx-value-dimmer="down" phx-target="<%= @id %>">Down</button>
+            <button phx-click="dimmer" phx-value-dimmer="up" phx-target="<%= @id %>">Up</button>
+            <button phx-click="switch" phx-value-switch="on" phx-target="<%= @id %>">On</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,7 +1,5 @@
 <div class="floor-contianer">
   <div class="floor-plan">
-    <div class="title">Floor Plan from <a href="https://codepen.io/ecurbelo/pen/GKjAx" target="_blank">Codepen</a></div>
-
     <div class="plan">
       <div class="start"></div>
       <%= for room <- @rooms do %>
@@ -9,8 +7,8 @@
       <% end %>
     </div>
   </div>
+    <div class="title">Floor Plan from <a href="https://codepen.io/ecurbelo/pen/GKjAx" target="_blank">Codepen</a></div>
 </div>
-
 <%= for room <- @rooms do %>
   <%= live_component(@socket, LightWeb.Room.Component.Controller, id: room.id+1, room: room) %>
 <% end %>

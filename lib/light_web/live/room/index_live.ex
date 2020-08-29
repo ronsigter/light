@@ -15,11 +15,7 @@ defmodule LightWeb.Room.IndexLive do
   end
 
   def mount(_params, _session, socket) do
-    socket =
-      socket
-      |> assign(:rooms, @rooms)
-
-    {:ok, socket}
+    {:ok, assign(socket, :rooms, @rooms)}
   end
 
   def handle_event(_event, _value, socket) do
@@ -27,14 +23,19 @@ defmodule LightWeb.Room.IndexLive do
   end
 
   def handle_info(
-        {Controller, :set_brightness,
-         %{
-           room: selected_room,
-           brightness: brightness
-         }},
+        {Controller, :set_brightness, %{room: selected_room, brightness: brightness}},
         %{assigns: %{rooms: rooms}} = socket
       ) do
     rooms = Enum.map(rooms, &set_room_brightness(&1, selected_room, brightness))
+
+    {:noreply, assign(socket, :rooms, rooms)}
+  end
+
+  def handle_info(
+        {Controller, :hide_modal, %{room: selected_room}},
+        %{assigns: %{rooms: rooms}} = socket
+      ) do
+    rooms = Enum.map(rooms, &hide_modal(&1, selected_room))
 
     {:noreply, assign(socket, :rooms, rooms)}
   end
@@ -48,13 +49,8 @@ defmodule LightWeb.Room.IndexLive do
     {:noreply, assign(socket, :rooms, rooms)}
   end
 
-  def handle_info(
-        {Controller, :hide_modal, %{room: selected_room}},
-        %{assigns: %{rooms: rooms}} = socket
-      ) do
-    rooms = Enum.map(rooms, &hide_modal(&1, selected_room))
-
-    {:noreply, assign(socket, :rooms, rooms)}
+  def handle_info(_channel, socket) do
+    {:noreply, socket}
   end
 
   defp set_room_brightness(%{name: name} = room, selected_room, brightness)
