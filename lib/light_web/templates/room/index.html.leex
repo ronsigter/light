@@ -1,6 +1,7 @@
 <div class="floor-contianer">
   <div class="floor-plan">
     <div class="title">Floor Plan from <a href="https://codepen.io/ecurbelo/pen/GKjAx" target="_blank">Codepen</a></div>
+
     <div class="plan">
       <div class="start"></div>
       <div class="room">
@@ -11,6 +12,7 @@
         </div>
         <div class="door"></div>
       </div>
+
       <div class="room">
         <p class="name"><%= link "Sala", to: Routes.live_path(LightWeb.Endpoint, LightWeb.Room.ShowLive, "Sala")%></p>
         <div class="light-bulb">
@@ -49,3 +51,7 @@
     </div>
   </div>
 </div>
+
+<%= for room <- @rooms do %>
+  <%= live_component(@socket, LightWeb.Room.Component.ModalController, id: room.id, room: room) %>
+<% end %>
