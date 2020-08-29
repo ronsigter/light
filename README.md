@@ -1,3 +1,7 @@
+# Demo
+
+![](demo/demo.gif)
+
 # Light
 
 To start your Phoenix server:
