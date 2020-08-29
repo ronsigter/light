@@ -1,23 +1,34 @@
-defmodule LightWeb.Room.Component.ModalController do
+defmodule LightWeb.Room.Component.Controller do
   use Phoenix.LiveComponent
 
   def render(assigns) do
     ~L"""
-    <h1><%= @room.name %> <%= @room.brightness %></h1>
-    <div class="controller-container" id="<%= @id %>">
-      <div class="switch">
-        <button phx-click="switch" phx-value-switch="off" phx-target="<%= @id %>">Off</button>
-        <button phx-click="switch" phx-value-switch="on" phx-target="<%= @id %>">On</button>
-      </div>
-      <div class="dimmers">
-        <button phx-click="dimmer" phx-value-dimmer="down" phx-target="<%= @id %>">Down</button>
-        <button phx-click="dimmer" phx-value-dimmer="up" phx-target="<%= @id %>">Up</button>
+    <div class="modal-container">
+      <h1><%= @room.name %> <%= @room.brightness %></h1>
+      <div class="controller-container" id="<%= @id %>">
+        <div class="switch">
+          <button phx-click="switch" phx-value-switch="off" phx-target="<%= @id %>">Off</button>
+          <button phx-click="switch" phx-value-switch="on" phx-target="<%= @id %>">On</button>
+        </div>
+        <div class="dimmers">
+          <button phx-click="dimmer" phx-value-dimmer="down" phx-target="<%= @id %>">Down</button>
+          <button phx-click="dimmer" phx-value-dimmer="up" phx-target="<%= @id %>">Up</button>
+        </div>
       </div>
     </div>
     """
   end
 
   def mount(socket) do
+    {:ok, socket}
+  end
+
+  def update(%{room: room, id: id}, socket) do
+    socket =
+      socket
+      |> assign(:room, room)
+      |> assign(:id, id)
+
     {:ok, socket}
   end
 
@@ -73,15 +84,6 @@ defmodule LightWeb.Room.Component.ModalController do
 
   def handle_event(_event, _value, socket) do
     {:noreply, socket}
-  end
-
-  def update(%{room: room, id: id}, socket) do
-    socket =
-      socket
-      |> assign(:room, room)
-      |> assign(:id, id)
-
-    {:ok, socket}
   end
 
   defp set_room_brightness(name, brightness) do
