@@ -3,11 +3,11 @@ defmodule LightWeb.Room.IndexLive do
   alias LightWeb.Room.Component.ModalController
 
   @rooms [
-    %{id: 1, name: "Kitchen", brightness: 100},
+    %{id: 1, name: "Hallway", brightness: 100},
     %{id: 2, name: "Sala", brightness: 100},
     %{id: 3, name: "Bedroom 1", brightness: 100},
     %{id: 4, name: "Bedroom 2", brightness: 100},
-    %{id: 5, name: "Hallway", brightness: 100}
+    %{id: 5, name: "Kitchen", brightness: 100}
   ]
 
   def render(assigns) do
