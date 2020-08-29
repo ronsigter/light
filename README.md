@@ -1,6 +1,6 @@
 # Demo
 
-![](demo/demo.gif)
+![](demo/light.gif)
 
 # Light
 
