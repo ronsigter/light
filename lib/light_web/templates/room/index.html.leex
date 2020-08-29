@@ -8,6 +8,7 @@
     </div>
   </div>
     <div class="title">Floor Plan from <a href="https://codepen.io/ecurbelo/pen/GKjAx" target="_blank">Codepen</a></div>
+    <div class="title">Design idea <a href="https://pragmaticstudio.com/tutorials/getting-started-with-phoenix-liveview" target="_blank">Pragmatic Studio</a></div>
 </div>
 <%= for room <- @rooms do %>
   <%= live_component(@socket, LightWeb.Room.Component.Controller, id: room.id+1, room: room) %>
