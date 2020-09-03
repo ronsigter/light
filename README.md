@@ -5,6 +5,7 @@
 - [ ] Implement hardware to respond to user controls
 
 # Demo
+https://lightdemo.herokuapp.com/
 
 ![](demo/light.gif)
 
